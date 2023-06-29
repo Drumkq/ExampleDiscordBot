@@ -1,4 +1,4 @@
-import {Command, Handler} from "../types";
+import {Command, Handler} from "../typings/types";
 import {Client} from "discord.js";
 import * as path from "path";
 import * as fs from "fs";

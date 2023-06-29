@@ -1,5 +1,5 @@
+import {Command} from "../../typings/types";
 import {Message} from "discord.js";
-import {Command} from "../../types";
 
 const PingCommand: Command = {
     name: 'ping',

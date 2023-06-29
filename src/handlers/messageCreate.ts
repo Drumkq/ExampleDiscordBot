@@ -1,11 +1,13 @@
 import {ChannelType} from "discord-api-types/v9";
 import {Client, Message} from "discord.js";
-import {Handler} from "../types";
+import {Handler} from "../typings/types";
 import config from "../config";
+import {EmbedBuildHelper} from "../exceptions/embedBuildHelper";
+import {BaseError} from "../exceptions";
 
 const MessageCreateHandler: Handler = {
     execute: async (client: Client): Promise<void> => {
-        client.on('messageCreate', (message: Message) => {
+        client.on('messageCreate', async (message: Message) => {
             if (!message.member || message.member.user.bot) return;
             if (!message.guild) return;
 
@@ -25,7 +27,25 @@ const MessageCreateHandler: Handler = {
                 command = alias;
             }
 
-            command.execute(message, args);
+            try {
+                await command.execute(message, args);
+            } catch (e) {
+                if (e instanceof BaseError) {
+                    message.channel.send(
+                        {
+                            embeds: [EmbedBuildHelper.buildEmbedException(e)],
+                            reply: {messageReference: message}
+                        }
+                    );
+                } else {
+                    message.channel.send(
+                        {
+                            content: `Something went wrong: ${e}`,
+                            reply: {messageReference: message}
+                        }
+                    );
+                }
+            }
         });
     }
 };

@@ -1,5 +1,5 @@
 import {Client, REST, SlashCommandBuilder} from "discord.js";
-import {Handler, SlashCommand} from "../types";
+import {Handler, SlashCommand} from "../typings/types";
 import {Routes} from "discord-api-types/v9";
 import config from "../config";
 import * as path from "path";

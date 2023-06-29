@@ -1,5 +1,5 @@
 import {Client, Collection} from "discord.js";
-import {Handler} from "./types";
+import {Handler} from "./typings/types";
 import config from "./config";
 import * as path from "path";
 import * as fs from "fs";

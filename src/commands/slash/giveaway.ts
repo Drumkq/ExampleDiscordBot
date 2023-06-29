@@ -1,10 +1,8 @@
 import {CommandInteraction, EmbedBuilder, SlashCommandBuilder} from "discord.js";
-import {AlreadyExists} from "../../exceptions/alreadyExists";
-import {InvalidGuild} from "../../exceptions/invalidGuild";
+import {AlreadyExists, InvalidGuild, InvalidUser} from "../../exceptions";
 import {PermissionFlagsBits} from 'discord-api-types/v9';
-import {InvalidUser} from "../../exceptions/invalidUser";
 import {GiveawayModel} from "../../models/giveaway";
-import {SlashCommand} from "../../types";
+import {SlashCommand} from "../../typings/types";
 
 const GiveawayCommand: SlashCommand = {
     command: new SlashCommandBuilder()
