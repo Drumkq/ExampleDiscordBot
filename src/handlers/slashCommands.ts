@@ -21,8 +21,6 @@ const SlashCommandHandler: Handler = {
 
         try {
             await rest.put(Routes.applicationCommands(config.ID), {body: slashCommands.map(command => command.toJSON())});
-
-            console.log('Successfully registered all slash commands');
         } catch (e) {
             console.error(e);
         }

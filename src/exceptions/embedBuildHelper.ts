@@ -2,13 +2,17 @@ import {BaseError} from "./baseError";
 import {EmbedBuilder} from "discord.js";
 
 class EmbedBuildHelper {
-    static buildEmbedException(exception: BaseError): EmbedBuilder {
+    static buildStandardEmbed(title: string, description?: string): EmbedBuilder {
         return new EmbedBuilder()
             .setColor(0xFF0000)
-            .setTitle(exception.name)
-            .setDescription(exception.message)
+            .setTitle(title)
+            .setDescription(description || '')
             .setTimestamp()
             .setFooter({text: 'Nichka bot'});
+    }
+
+    static buildEmbedException(exception: BaseError): EmbedBuilder {
+        return this.buildStandardEmbed(exception.name, exception.message);
     }
 }
 

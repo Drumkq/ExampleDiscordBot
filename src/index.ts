@@ -17,7 +17,7 @@ async function main() {
         handler.execute(client);
     });
 
-    await client.login(config.TOKEN);
+    await client.login(config.TOKEN).then(() => console.log('Bot logged in!'));
 }
 
 main();
