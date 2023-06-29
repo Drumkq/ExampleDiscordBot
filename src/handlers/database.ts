@@ -1,10 +1,10 @@
 import {Handler} from "../typings/types";
 import * as mongoose from "mongoose";
-import {Client} from "discord.js";
+import config from "../config";
 
 const DatabaseHandler: Handler = {
-    execute: async (client: Client): Promise<void> => {
-        await mongoose.connect('mongodb://localhost:27017/nichka');
+    execute: async (/* client: Client */): Promise<void> => {
+        await mongoose.connect(config.DB_CON_STR);
     }
 };
 

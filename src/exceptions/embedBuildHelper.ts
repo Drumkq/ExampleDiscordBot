@@ -6,7 +6,7 @@ class EmbedBuildHelper {
         return new EmbedBuilder()
             .setColor(0xFF0000)
             .setTitle(title)
-            .setDescription(description || '')
+            .setDescription(description || null)
             .setTimestamp()
             .setFooter({text: 'Nichka bot'});
     }
